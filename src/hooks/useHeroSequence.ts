@@ -23,25 +23,20 @@ export interface SequenceState {
   titlesStarted: boolean
 }
 
-const TITLES = [
-  'Business Analyst',
-  'AI Engineer',
-  'Software Engineer',
-  'Full Stack Developer',
-]
+const TITLES = ['Business Analyst', 'AI Engineer']
 
 const GREETING = 'Hi, my name is'
 const NAME = 'Maarij Ali'
 
-const TYPE_SPEED_GREETING = 50
-const TYPE_SPEED_NAME = 65
-const TYPE_SPEED_TITLE = 45
-const DELETE_SPEED_TITLE = 22
-const PAUSE_GREETING = 400
-const PAUSE_NAME = 600
-const TITLE_HOLD = 2200
-const TITLE_PAUSE = 250
-const CURSOR_BLINK_DURATION = 700
+const TYPE_SPEED_GREETING = 48
+const TYPE_SPEED_NAME = 62
+const TYPE_SPEED_TITLE = 42
+const DELETE_SPEED_TITLE = 20
+const PAUSE_GREETING = 450
+const PAUSE_NAME = 700
+const TITLE_HOLD = 2400
+const TITLE_PAUSE = 300
+const CURSOR_BLINK_DURATION = 650
 
 export function useHeroSequence() {
   const [state, setState] = useState<SequenceState>({
@@ -123,7 +118,7 @@ export function useHeroSequence() {
       await delay(PAUSE_NAME)
       if (cancelledRef.current) return
 
-      // 4. Cycle all titles
+      // 4. Cycle titles: type first, delete, type second, hold (last stays)
       for (let idx = 0; idx < TITLES.length; idx++) {
         setState((s) => ({
           ...s,
