@@ -26,7 +26,7 @@ export interface SequenceState {
 const TITLES = ['Business Analyst', 'AI Engineer']
 
 const GREETING = 'Hi, my name is'
-const NAME = 'Maarij Ali'
+const NAME = 'Maarij'
 
 const TYPE_SPEED_GREETING = 48
 const TYPE_SPEED_NAME = 62

@@ -32,6 +32,12 @@ export interface SkillCategory {
   items: string[]
 }
 
+export interface CurrentlyCard {
+  role: string
+  company: string
+  description: string
+}
+
 export interface Profile {
   name: string
   firstName: string
@@ -45,7 +51,8 @@ export interface Profile {
   education: EducationItem[]
   projects: Project[]
   skills: SkillCategory[]
-  achievements: string[]
+  currently: CurrentlyCard
+  currentFocus: string[]
   languages: string[]
 }
 
@@ -55,9 +62,9 @@ export const profile: Profile = {
   title: 'Software Engineer',
   tagline: 'Crafting elegant digital experiences with clean code and creative design.',
   about: [
-    'I am a passionate software engineer with a deep love for building products that are not just functional but delightful to use. I specialize in modern web technologies and bring ideas to life through clean, performant code.',
-    'With experience spanning frontend architecture, backend systems, and everything in between, I thrive at the intersection of engineering and design. I believe great software starts with empathy for the user and respect for the craft.',
-    'When I\'m not writing code, you\'ll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.',
+    'My path into technology was far from conventional. I began by studying Law and was called to the Bar of England and Wales, where I developed a strong foundation in analytical thinking, structured problem-solving and communication. While I enjoyed the challenge of legal reasoning, I became increasingly fascinated by the way technology could solve complex business problems at scale.',
+    'That curiosity led me into software engineering before I found my place in Business Analysis, where I now bridge the gap between business strategy and technical delivery. Working across enterprise digital transformation projects has shown me that the best solutions aren\'t simply well engineered—they\'re built around the people and problems they\'re designed to serve.',
+    'Today my focus is on AI, intelligent automation and modern software development. I\'m particularly interested in designing AI-powered solutions that help organisations work smarter, make better decisions and deliver meaningful value through technology.',
   ],
   cvUrl: '/cv.pdf',
   email: 'maarij@example.com',
@@ -170,11 +177,16 @@ export const profile: Profile = {
       items: ['Docker', 'AWS', 'Vercel', 'Git', 'GitHub Actions', 'Figma', 'Linux'],
     },
   ],
-  achievements: [
-    'Open source contributor with 500+ stars across projects on GitHub',
-    'Speaker at ReactConf 2024 — "Animating the Web with Framer Motion"',
-    'Built open-source library used by 2K+ developers',
-    'Won 2 hackathons with innovative AI-integrated solutions',
+  currently: {
+    role: 'Business Analyst',
+    company: 'Cognizant Technology Solutions',
+    description:
+      'Designing and supporting enterprise digital transformation initiatives while building AI-powered solutions.',
+  },
+  currentFocus: [
+    'Enterprise AI Solutions',
+    'Agentic AI Workflows',
+    'Intelligent Automation',
   ],
-  languages: ['English (Native)', 'Urdu (Native)', 'Hindi (Conversational)'],
+  languages: ['English (Native)', 'Urdu (Spoken)'],
 }

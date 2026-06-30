@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download, Mail } from 'lucide-react'
+import { Download, Mail, ChevronDown } from 'lucide-react'
 import { profile } from '../data/profile'
 import { useHeroSequence, TITLES } from '../hooks/useHeroSequence'
 import HeroCanvasBackground from './hero/HeroCanvasBackground'
@@ -182,7 +182,20 @@ export default function Hero() {
         transition={{ delay: 0.5, duration: 0.6 }}
       >
         <span className="hero__scroll-text">Scroll to explore</span>
-        <div className="hero__scroll-dot" />
+        <div className="hero__scroll-chevrons">
+          <motion.div
+            animate={{ y: [0, 6, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <ChevronDown size={18} />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 6, 0], opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+          >
+            <ChevronDown size={18} />
+          </motion.div>
+        </div>
       </motion.div>
 
       <div className="hero__cv-note">
