@@ -9,22 +9,26 @@ export interface ExperienceItem {
   company: string
   period: string
   description: string
+  bullets: string[]
   technologies: string[]
 }
 
 export interface EducationItem {
   degree: string
   school: string
-  period: string
-  description?: string
+  year: string
+  details: string
 }
 
 export interface Project {
   title: string
+  type: string
   description: string
   technologies: string[]
+  points?: string[]
   liveUrl?: string
   githubUrl?: string
+  status?: 'live' | 'coming-soon'
 }
 
 export interface SkillCategory {
@@ -66,115 +70,137 @@ export const profile: Profile = {
     'That curiosity led me into software engineering before I found my place in Business Analysis, where I now bridge the gap between business strategy and technical delivery. Working across enterprise digital transformation projects has shown me that the best solutions aren\'t simply well engineered—they\'re built around the people and problems they\'re designed to serve.',
     'Today my focus is on AI, intelligent automation and modern software development. I\'m particularly interested in designing AI-powered solutions that help organisations work smarter, make better decisions and deliver meaningful value through technology.',
   ],
-  cvUrl: '/cv.pdf',
-  email: 'maarij@example.com',
+  cvUrl: '/Maarij_Ali_CV.pdf',
+  email: 'maarij-ali@outlook.com',
   socials: [
-    { label: 'GitHub', url: 'https://github.com/maarijali', icon: 'github' },
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/maarijali', icon: 'linkedin' },
-    { label: 'Twitter', url: 'https://twitter.com/maarijali', icon: 'twitter' },
+    { label: 'GitHub', url: 'https://github.com/m-ali7', icon: 'github' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/maarij-ali-76b15019a', icon: 'linkedin' },
   ],
   experience: [
     {
-      role: 'Senior Frontend Engineer',
-      company: 'TechCorp Inc.',
-      period: '2023 — Present',
+      role: 'AI Trading Assistant – Agentic AI Solution Prototype',
+      company: 'Cognizant Technology Solutions',
+      period: '2026',
       description:
-        'Leading the frontend architecture for a SaaS platform serving 50K+ users. Spearheaded migration to React 18 and TypeScript, reducing production bugs by 40%. Mentored a team of 4 junior developers.',
-      technologies: ['React', 'TypeScript', 'Next.js', 'GraphQL', 'Tailwind CSS'],
+        'Designed and developed an AI-powered Trading Assistant prototype aimed at reducing data-to-decision latency for commercial trading teams operating across multiple markets.',
+      bullets: [
+        'Designed an end-to-end agentic AI architecture using Python, Azure Functions, Azure OpenAI and Microsoft Power Platform.',
+        'Built modular reasoning engines for trading analysis, root-cause identification, recommendation generation and executive commentary workflows.',
+        'Implemented Azure Function endpoints and Power Automate orchestration workflows for scheduled intelligence brief delivery and conversational Q&A.',
+        'Integrated Azure OpenAI to generate grounded business commentary, management summaries and contextual responses from structured trading datasets.',
+        'Designed a Microsoft Teams conversational assistant experience and interactive React/Vite prototype.',
+        'Presented the solution architecture, prototype capabilities and implementation roadmap to senior leadership.',
+      ],
+      technologies: ['AI Engineering', 'Azure OpenAI', 'Azure Functions', 'Power Platform', 'React/Vite', 'Agentic AI'],
     },
     {
-      role: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      period: '2021 — 2023',
+      role: 'Business Analyst',
+      company: 'BAT / British American Tobacco via Cognizant',
+      period: 'July 2024 – February 2026',
       description:
-        'Built and scaled the core product from MVP to 10K users. Designed RESTful APIs, implemented real-time features with WebSockets, and optimized database queries achieving 60% faster load times.',
-      technologies: ['Node.js', 'React', 'PostgreSQL', 'Redis', 'Docker'],
+        'Supported large-scale digital and eCommerce transformation initiatives across multiple international markets within complex enterprise delivery environments.',
+      bullets: [
+        'Owned the end-to-end requirements lifecycle across platform enhancements and integration initiatives.',
+        'Translated business requirements into structured, testable deliverables aligned with delivery objectives.',
+        'Collaborated with architects, developers, QA teams and business stakeholders across Agile delivery teams.',
+        'Managed and prioritised backlogs within Azure DevOps, supporting sprint planning, refinement and delivery tracking.',
+        'Supported risk and issue management, defect triage, UAT coordination and production release readiness.',
+        'Delivered knowledge transfer sessions and documentation to support continuity across delivery pods.',
+      ],
+      technologies: ['Business Analysis', 'eCommerce', 'Azure DevOps', 'Agile', 'UAT', 'Stakeholder Management'],
     },
     {
-      role: 'Frontend Developer',
-      company: 'Agency Digital',
-      period: '2019 — 2021',
+      role: 'Digital Asset Management Specialist',
+      company: 'John Lewis & Partners via Cognizant',
+      period: 'November 2022 – July 2024',
       description:
-        'Developed high-performance marketing websites and interactive web applications for Fortune 500 clients. Introduced component library reducing development time by 30% across projects.',
-      technologies: ['React', 'JavaScript', 'Sass', 'WordPress', 'Figma'],
+        'Supported digital asset management operations within an Adobe Experience Manager environment, helping streamline digital asset workflows and improve content accessibility.',
+      bullets: [
+        'Supported DAM operations within an Adobe Experience Manager environment.',
+        'Used Jira and ServiceNow to manage DAM-related tasks, defects, incidents and change requests.',
+        'Worked closely with stakeholders and technical teams to support DAM processes.',
+        'Helped align operational requirements with platform capabilities.',
+      ],
+      technologies: ['AEM', 'Digital Asset Management', 'Jira', 'ServiceNow', 'Stakeholder Support'],
     },
     {
-      role: 'Junior Developer',
-      company: 'CodeLab Studios',
-      period: '2018 — 2019',
+      role: 'Programmer Analyst / Technical Training Programme',
+      company: 'Cognizant Technology Solutions',
+      period: 'July 2022 – November 2022',
       description:
-        'Started my professional journey building responsive websites and web applications. Contributed to 15+ client projects and developed a passion for clean, maintainable code.',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+        'Completed an intensive technical training programme, gaining hands-on exposure to frontend and backend software development.',
+      bullets: [
+        'Built foundational experience across HTML, CSS, JavaScript, React.js, Node.js and MongoDB.',
+        'Developed understanding of software development fundamentals and Agile ways of working.',
+        'Worked on collaborative technical exercises and problem-solving activities.',
+      ],
+      technologies: ['React', 'JavaScript', 'Node.js', 'MongoDB', 'Agile', 'Software Fundamentals'],
     },
   ],
   education: [
     {
-      degree: 'B.S. Computer Science',
-      school: 'University of Engineering & Technology',
-      period: '2014 — 2018',
-      description: 'Graduated with honors. Focused on software engineering, algorithms, and human-computer interaction.',
+      degree: 'LLM Bar Vocational Studies with Corporate Specialism',
+      school: 'City Law School, London',
+      year: '2022',
+      details: 'Merit, with distinctions in advocacy, opinion writing, legal drafting and conference skills.',
     },
     {
-      degree: 'Full Stack Web Development',
-      school: 'Microverse Online Bootcamp',
-      period: '2018',
-      description: 'Intensive remote program focused on pair programming, code reviews, and building real-world projects.',
+      degree: 'LLB Bachelor of Laws with Honours',
+      school: 'City Law School, London',
+      year: '2020',
+      details: 'Class II Upper Division. Completed a dissertation assessing authorities and precedent within the unfair prejudice jurisdiction in company law.',
     },
   ],
   projects: [
     {
-      title: 'TaskFlow',
+      title: 'AI Trading Assistant',
+      type: 'Agentic AI Solution Prototype',
       description:
-        'A real-time project management dashboard with drag-and-drop kanban boards, team collaboration features, and analytics. Handles 10K+ concurrent users.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'WebSocket', 'PostgreSQL'],
-      liveUrl: 'https://taskflow-demo.example.com',
-      githubUrl: 'https://github.com/maarijali/taskflow',
+        'An AI-powered trading intelligence prototype designed to reduce data-to-decision latency through agentic reasoning workflows, Azure OpenAI, Azure Functions, Power Platform orchestration and a React/Vite interface.',
+      technologies: ['Agentic AI', 'Azure OpenAI', 'Azure Functions', 'Power Platform', 'React/Vite', 'Python'],
+      githubUrl: 'https://github.com/maarij-ali/ai-trading-assistant',
+      status: 'live',
     },
     {
-      title: 'DevMetrics',
+      title: 'Portfolio Website',
+      type: 'Personal Brand Website',
       description:
-        'Open-source developer analytics tool that integrates with GitHub and GitLab to provide insights on code quality, velocity, and team performance.',
-      technologies: ['Next.js', 'Python', 'FastAPI', 'MongoDB', 'Chart.js'],
-      liveUrl: 'https://devmetrics.example.com',
-      githubUrl: 'https://github.com/maarijali/devmetrics',
+        'A premium animated portfolio built to showcase my background across business analysis, AI engineering and digital transformation.',
+      technologies: ['React', 'Vite', 'TypeScript', 'GSAP', 'Framer Motion'],
+      githubUrl: '#',
+      status: 'live',
     },
     {
-      title: 'PixelCraft',
+      title: 'AI Workflow Experiments',
+      type: 'Learning & Prototyping',
       description:
-        'A browser-based image editor with layers, filters, and AI-powered background removal. Supports real-time collaboration via CRDT.',
-      technologies: ['Vue.js', 'WebAssembly', 'Rust', 'WebRTC', 'Canvas API'],
-      liveUrl: 'https://pixelcraft.example.com',
-      githubUrl: 'https://github.com/maarijali/pixelcraft',
+        'A collection of experiments exploring conversational AI, multi-step reasoning workflows, automation patterns and AI-assisted business processes.',
+      technologies: ['AI', 'Automation', 'Prompt Engineering', 'Workflows'],
+      githubUrl: '#',
+      status: 'coming-soon',
     },
     {
-      title: 'CryptoTracker',
+      title: 'Digital Transformation Case Studies',
+      type: 'Business Analysis',
       description:
-        'Real-time cryptocurrency portfolio tracker with price alerts, interactive charts, and news aggregation from multiple sources.',
-      technologies: ['React Native', 'TypeScript', 'Firebase', 'CoinGecko API'],
-      liveUrl: 'https://cryptotracker.example.com',
-      githubUrl: 'https://github.com/maarijali/cryptotracker',
+        'A future section for selected case studies covering enterprise delivery, eCommerce transformation, stakeholder analysis and requirements-led solution design.',
+      technologies: ['Business Analysis', 'Agile', 'eCommerce', 'Transformation'],
+      githubUrl: '#',
+      status: 'coming-soon',
     },
   ],
   skills: [
     {
-      category: 'Languages',
-      items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'SQL', 'HTML', 'CSS'],
+      category: 'AI & Automation',
+      items: ['Agentic AI', 'Azure OpenAI', 'Azure Functions', 'Microsoft Power Platform', 'Prompt Engineering', 'Conversational AI', 'AI Solution Design', 'Multi-Step Reasoning Workflows', 'RAG Concepts', 'LoRA & Fine-Tuning Concepts', 'LLM Evaluation & Guardrails'],
     },
     {
-      category: 'Frontend',
-      items: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Framer Motion', 'Redux', 'React Query'],
+      category: 'Business Analysis',
+      items: ['Requirements Management', 'Backlog Refinement', 'User Stories & Acceptance Criteria', 'Stakeholder Management', 'UAT & Defect Management', 'Agile / Scrum', 'Azure DevOps', 'Multi-Market Delivery', 'Platform Migration & Transformation'],
     },
     {
-      category: 'Backend',
-      items: ['Node.js', 'Express', 'FastAPI', 'GraphQL', 'REST APIs', 'WebSockets'],
-    },
-    {
-      category: 'Databases',
-      items: ['PostgreSQL', 'MongoDB', 'Redis', 'Firebase', 'Prisma ORM'],
-    },
-    {
-      category: 'DevOps & Tools',
-      items: ['Docker', 'AWS', 'Vercel', 'Git', 'GitHub Actions', 'Figma', 'Linux'],
+      category: 'Tools & Technologies',
+      items: ['Python', 'React', 'JavaScript', 'Microsoft 365', 'Azure DevOps', 'Magento / Adobe Commerce', 'Adobe Experience Manager', 'Jira', 'ServiceNow'],
     },
   ],
   currently: {

@@ -68,7 +68,8 @@ export default function Navbar() {
           ))}
           <a
             href={profile.cvUrl}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary btn-sm navbar__cv-btn"
           >
             Resume
@@ -106,7 +107,8 @@ export default function Navbar() {
             ))}
             <a
               href={profile.cvUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary navbar__mobile-cv"
             >
               Download CV

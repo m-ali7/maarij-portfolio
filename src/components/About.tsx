@@ -37,6 +37,11 @@ export default function About() {
 
   return (
     <section id="about" className="about" ref={sectionRef}>
+      <div className="about__visual-bg">
+        <AboutCanvas />
+        <div className="about__visual-overlay" />
+      </div>
+
       <div className="container about__container">
         <div className="about__grid">
           <div className="about__left">
@@ -47,76 +52,70 @@ export default function About() {
               ))}
             </div>
           </div>
+          <div className="about__right" />
+        </div>
 
-          <div className="about__right">
-            <div className="about__visual">
-              <AboutCanvas />
-              <div className="about__visual-overlay" />
+        <div className="about__cards-area">
+          <motion.div
+            className="about-card about-card--currently glass"
+            animate={floatConfigs[0]}
+            transition={{
+              duration: floatConfigs[0].duration,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: floatConfigs[0].delay,
+            }}
+          >
+            <div className="about-card__icon">
+              <Briefcase size={18} />
             </div>
+            <h3 className="about-card__title">Currently</h3>
+            <p className="about-card__role">{profile.currently.role}</p>
+            <p className="about-card__company">{profile.currently.company}</p>
+            <p className="about-card__desc">{profile.currently.description}</p>
+          </motion.div>
 
-            <div className="about__cards-stack">
-              <motion.div
-                className="about-card about-card--currently glass"
-                animate={floatConfigs[0]}
-                transition={{
-                  duration: floatConfigs[0].duration,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: floatConfigs[0].delay,
-                }}
-              >
-                <div className="about-card__icon">
-                  <Briefcase size={18} />
-                </div>
-                <h3 className="about-card__title">Currently</h3>
-                <p className="about-card__role">{profile.currently.role}</p>
-                <p className="about-card__company">{profile.currently.company}</p>
-                <p className="about-card__desc">{profile.currently.description}</p>
-              </motion.div>
-
-              <motion.div
-                className="about-card about-card--focus glass"
-                animate={floatConfigs[1]}
-                transition={{
-                  duration: floatConfigs[1].duration,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: floatConfigs[1].delay,
-                }}
-              >
-                <div className="about-card__icon">
-                  <Target size={18} />
-                </div>
-                <h3 className="about-card__title">Current Focus</h3>
-                <ul className="about-card__list">
-                  {profile.currentFocus.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                className="about-card about-card--languages glass"
-                animate={floatConfigs[2]}
-                transition={{
-                  duration: floatConfigs[2].duration,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: floatConfigs[2].delay,
-                }}
-              >
-                <div className="about-card__icon">
-                  <Globe size={16} />
-                </div>
-                <h3 className="about-card__title">Languages</h3>
-                <div className="about__lang-items">
-                  {profile.languages.map((lang, i) => (
-                    <span key={i} className="about__lang-pill">{lang}</span>
-                  ))}
-                </div>
-              </motion.div>
+          <motion.div
+            className="about-card about-card--focus glass"
+            animate={floatConfigs[1]}
+            transition={{
+              duration: floatConfigs[1].duration,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: floatConfigs[1].delay,
+            }}
+          >
+            <div className="about-card__icon">
+              <Target size={18} />
             </div>
-          </div>
+            <h3 className="about-card__title">Current Focus</h3>
+            <ul className="about-card__list">
+              {profile.currentFocus.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            className="about-card about-card--languages glass"
+            animate={floatConfigs[2]}
+            transition={{
+              duration: floatConfigs[2].duration,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: floatConfigs[2].delay,
+            }}
+          >
+            <div className="about-card__icon">
+              <Globe size={16} />
+            </div>
+            <h3 className="about-card__title">Languages</h3>
+            <div className="about__lang-items">
+              {profile.languages.map((lang, i) => (
+                <span key={i} className="about__lang-pill">{lang}</span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

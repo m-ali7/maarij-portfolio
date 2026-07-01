@@ -3,6 +3,7 @@ import { Lenis as ReactLenis } from 'lenis/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import CustomCursor from './components/CustomCursor'
+import GlobalBackground from './components/GlobalBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -23,6 +24,7 @@ export default function App() {
   return (
     <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
       <CustomCursor />
+      <GlobalBackground />
       <Navbar />
       <main>
         <Hero />

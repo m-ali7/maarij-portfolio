@@ -11,91 +11,87 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.timeline-line', {
-        scrollTrigger: {
-          trigger: '.timeline',
-          start: 'top 60%',
-          end: 'bottom 60%',
-          scrub: 1,
-        },
-        scaleY: 0,
-        transformOrigin: 'top',
-        ease: 'none',
+      gsap.from('.exp__heading', {
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 68%' },
+        opacity: 0, y: 30, duration: 0.8, ease: 'power3.out',
       })
 
-      gsap.from('.timeline-item', {
-        scrollTrigger: {
-          trigger: '.timeline',
-          start: 'top 60%',
-          end: 'bottom 60%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
+      gsap.from('.exp-group__line', {
+        scrollTrigger: { trigger: '.exp-group', start: 'top 55%', end: 'bottom 50%', scrub: 1 },
+        scaleY: 0, transformOrigin: 'top', ease: 'none',
+      })
+
+      gsap.from('.exp-card', {
+        scrollTrigger: { trigger: '.exp-group', start: 'top 55%' },
+        opacity: 0, y: 40, duration: 0.8, stagger: 0.15, ease: 'power3.out',
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
   return (
-    <section id="experience" className="section" ref={sectionRef}>
+    <section id="experience" className="experience" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Experience</h2>
-        <p className="section-subtitle">My professional journey and the impact I&apos;ve made along the way.</p>
+        <h2 className="exp__heading">Experience</h2>
 
-        <div className="timeline">
-          <div className="timeline-line" />
-
-          <div className="timeline__header">
-            <Briefcase size={20} />
+        <div className="exp-group">
+          <div className="exp-group__header">
+            <div className="exp-group__icon">
+              <Briefcase size={18} />
+            </div>
             <span>Work</span>
           </div>
 
-          {profile.experience.map((item, i) => (
-            <div
-              key={i}
-              className={`timeline-item ${i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right'}`}
-            >
-              <div className="timeline-item__dot" />
-              <div className="timeline-item__card glass">
-                <span className="timeline-item__period">{item.period}</span>
-                <h3 className="timeline-item__role">{item.role}</h3>
-                <p className="timeline-item__company">{item.company}</p>
-                <p className="timeline-item__desc">{item.description}</p>
-                <div className="timeline-item__tags">
-                  {item.technologies.map((tech) => (
-                    <span key={tech} className="tag">{tech}</span>
-                  ))}
+          <div className="exp-group__body">
+            <div className="exp-group__line" />
+
+            {profile.experience.map((item, i) => (
+              <div
+                key={`work-${i}`}
+                className={`exp-card ${i % 2 === 0 ? 'exp-card--left' : 'exp-card--right'}`}
+              >
+                <div className="exp-card__dot" />
+                <div className="exp-card__inner glass">
+                  <span className="exp-card__period">{item.period}</span>
+                  <h3 className="exp-card__role">{item.role}</h3>
+                  <p className="exp-card__company">{item.company}</p>
+                  <p className="exp-card__desc">{item.description}</p>
+                  <ul className="exp-card__bullets">
+                    {item.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </ul>
+                  <div className="exp-card__tags">
+                    {item.technologies.map((tech) => (
+                      <span key={tech} className="tag">{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
 
-          <div className="timeline__header timeline__header--edu">
-            <GraduationCap size={20} />
-            <span>Education</span>
-          </div>
-
-          {profile.education.map((item, i) => (
-            <div
-              key={i}
-              className={`timeline-item ${i % 2 === 0 ? 'timeline-item--left' : 'timeline-item--right'}`}
-            >
-              <div className="timeline-item__dot timeline-item__dot--edu" />
-              <div className="timeline-item__card glass">
-                <span className="timeline-item__period">{item.period}</span>
-                <h3 className="timeline-item__role">{item.degree}</h3>
-                <p className="timeline-item__company">{item.school}</p>
-                {item.description && (
-                  <p className="timeline-item__desc">{item.description}</p>
-                )}
+            <div className="exp-group__header exp-group__header--edu">
+              <div className="exp-group__icon exp-group__icon--edu">
+                <GraduationCap size={18} />
               </div>
+              <span>Education</span>
             </div>
-          ))}
+
+            {profile.education.map((item, i) => (
+              <div
+                key={`edu-${i}`}
+                className={`exp-card ${i % 2 === 0 ? 'exp-card--left' : 'exp-card--right'}`}
+              >
+                <div className="exp-card__dot exp-card__dot--edu" />
+                <div className="exp-card__inner glass">
+                  <span className="exp-card__period">{item.year}</span>
+                  <h3 className="exp-card__role">{item.degree}</h3>
+                  <p className="exp-card__company">{item.school}</p>
+                  <p className="exp-card__desc">{item.details}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

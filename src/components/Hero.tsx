@@ -18,7 +18,7 @@ function HeroButton({
 }) {
   const Component = href ? motion.a : motion.button
   const props = href
-    ? { href, download: true, rel: undefined, target: undefined }
+    ? { href, target: '_blank', rel: 'noopener noreferrer' }
     : { type: 'button' as const, onClick }
 
   return (
@@ -198,11 +198,6 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      <div className="hero__cv-note">
-        <p>
-          Place your CV PDF at <code>public/cv.pdf</code>
-        </p>
-      </div>
     </section>
   )
 }

@@ -1,18 +1,16 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Code2, Monitor, Server, Database, Wrench } from 'lucide-react'
+import { Brain, BarChart3, Wrench } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { profile } from '../data/profile'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
-  Languages: Code2,
-  Frontend: Monitor,
-  Backend: Server,
-  Databases: Database,
-  'DevOps & Tools': Wrench,
+  'AI & Automation': Brain,
+  'Business Analysis': BarChart3,
+  'Tools & Technologies': Wrench,
 }
 
 export default function Skills() {
@@ -20,40 +18,38 @@ export default function Skills() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.skills-category', {
-        scrollTrigger: {
-          trigger: '.skills-grid',
-          start: 'top 70%',
-          end: 'bottom 60%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.7,
-        stagger: 0.15,
-        ease: 'power3.out',
+      gsap.from('.skills__heading', {
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 68%' },
+        opacity: 0, y: 30, duration: 0.8, ease: 'power3.out',
+      })
+      gsap.from('.skills-panel', {
+        scrollTrigger: { trigger: '.skills-grid', start: 'top 70%' },
+        opacity: 0, y: 36, duration: 0.8, stagger: 0.15, ease: 'power3.out',
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
   return (
-    <section id="skills" className="section" ref={sectionRef}>
+    <section id="skills" className="skills" ref={sectionRef}>
       <div className="container">
-        <h2 className="section-title">Skills & Tools</h2>
-        <p className="section-subtitle">Technologies I work with on a daily basis.</p>
+        <h2 className="skills__heading">Skills & Tools</h2>
+        <p className="skills__subtitle">
+          Capabilities I bring to every engagement.
+        </p>
 
         <div className="skills-grid">
           {profile.skills.map((category) => {
-            const Icon = CATEGORY_ICONS[category.category] || Code2
+            const Icon = CATEGORY_ICONS[category.category] || Brain
             return (
-              <div key={category.category} className="skills-category glass">
-                <div className="skills-category__header">
-                  <Icon size={20} />
+              <div key={category.category} className="skills-panel glass">
+                <div className="skills-panel__header">
+                  <div className="skills-panel__icon">
+                    <Icon size={20} />
+                  </div>
                   <h3>{category.category}</h3>
                 </div>
-                <div className="skills-category__items">
+                <div className="skills-panel__items">
                   {category.items.map((skill) => (
                     <span key={skill} className="skill-pill">
                       {skill}
