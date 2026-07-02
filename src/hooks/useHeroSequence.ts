@@ -28,15 +28,15 @@ const TITLES = ['Business Analyst', 'AI Engineer']
 const GREETING = 'Hi, my name is'
 const NAME = 'Maarij'
 
-const TYPE_SPEED_GREETING = 48
-const TYPE_SPEED_NAME = 62
+const TYPE_SPEED_GREETING = 40
+const TYPE_SPEED_NAME = 60
 const TYPE_SPEED_TITLE = 42
 const DELETE_SPEED_TITLE = 20
-const PAUSE_GREETING = 450
-const PAUSE_NAME = 700
+const PAUSE_GREETING = 300
+const PAUSE_NAME = 600
 const TITLE_HOLD = 2400
 const TITLE_PAUSE = 300
-const CURSOR_BLINK_DURATION = 650
+const CURSOR_BLINK_DURATION = 400
 
 export function useHeroSequence() {
   const [state, setState] = useState<SequenceState>({
