@@ -40,7 +40,14 @@ const PARTICLE_CONFIG = [
   { count: 20, layer: 2, sizeRange: [1.6, 3.2], alphaRange: [0.06, 0.16] },
 ] as const
 
+const PARTICLE_CONFIG_MOBILE = [
+  { count: 30, layer: 0, sizeRange: [0.6, 1.4], alphaRange: [0.06, 0.18] },
+  { count: 15, layer: 1, sizeRange: [1.0, 2.2], alphaRange: [0.08, 0.22] },
+  { count: 8,  layer: 2, sizeRange: [1.6, 3.2], alphaRange: [0.04, 0.10] },
+] as const
+
 const STAR_COUNT = 140
+const STAR_COUNT_MOBILE = 70
 const CONNECTION_DIST = 110
 const MOUSE_REPEL_RADIUS = 200
 const MOUSE_GLOW_RADIUS = 480
@@ -73,11 +80,14 @@ export default function HeroCanvasBackground() {
 
   const init = useCallback((w: number, h: number) => {
     dimsRef.current = { w, h }
+    const isMobile = w <= 768 || h <= 768
+    const cfg = isMobile ? PARTICLE_CONFIG_MOBILE : PARTICLE_CONFIG
+    const starLimit = isMobile ? STAR_COUNT_MOBILE : STAR_COUNT
     const particles: Particle[] = []
-    for (const cfg of PARTICLE_CONFIG) {
-      for (let i = 0; i < cfg.count; i++) {
-        const [lo, hi] = cfg.sizeRange
-        const [al, ah] = cfg.alphaRange
+    for (const c of cfg) {
+      for (let i = 0; i < c.count; i++) {
+        const [lo, hi] = c.sizeRange
+        const [al, ah] = c.alphaRange
         const hue = PARTICLE_HUES[Math.floor(Math.random() * PARTICLE_HUES.length)]
         particles.push({
           x: Math.random() * w, y: Math.random() * h,
@@ -91,14 +101,14 @@ export default function HeroCanvasBackground() {
           alpha: al + Math.random() * (ah - al),
           baseAlpha: al + Math.random() * (ah - al),
           phase: Math.random() * Math.PI * 2,
-          layer: cfg.layer,
+          layer: c.layer,
         })
       }
     }
     particlesRef.current = particles
 
     const stars: Star[] = []
-    for (let i = 0; i < STAR_COUNT; i++) {
+    for (let i = 0; i < starLimit; i++) {
       stars.push({
         x: Math.random() * w, y: Math.random() * h,
         size: Math.random() * 1.3 + 0.2,
@@ -122,6 +132,13 @@ export default function HeroCanvasBackground() {
     MOUSE_STATE.isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
     if (MOUSE_STATE.isTouch) MOUSE_STATE.isActive = false
 
+    const cachedRect = { left: 0, top: 0 }
+    const updateRect = () => {
+      const r = canvas.getBoundingClientRect()
+      cachedRect.left = r.left; cachedRect.top = r.top
+    }
+    updateRect()
+
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const rect = canvas.getBoundingClientRect()
@@ -129,16 +146,16 @@ export default function HeroCanvasBackground() {
       canvas.height = rect.height * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       init(rect.width, rect.height)
+      cachedRect.left = rect.left; cachedRect.top = rect.top
     }
     resize()
     window.addEventListener('resize', resize)
 
-    // Listen on hero section parent so content doesn't block events
     const hero = canvas.parentElement
     const onMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      MOUSE_STATE.targetX = e.clientX - rect.left
-      MOUSE_STATE.targetY = e.clientY - rect.top
+      updateRect()
+      MOUSE_STATE.targetX = e.clientX - cachedRect.left
+      MOUSE_STATE.targetY = e.clientY - cachedRect.top
       MOUSE_STATE.isActive = true
     }
     const onLeave = () => { MOUSE_STATE.isActive = false }
@@ -293,7 +310,9 @@ export default function HeroCanvasBackground() {
 
       rafRef.current = requestAnimationFrame(animate)
     }
-    rafRef.current = requestAnimationFrame(animate)
+    requestAnimationFrame(() => {
+      rafRef.current = requestAnimationFrame(animate)
+    })
 
     return () => {
       window.removeEventListener('resize', resize)

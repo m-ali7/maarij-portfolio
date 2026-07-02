@@ -24,6 +24,8 @@ interface NebulaBlob {
 
 const STAR_COUNT = 180
 const PARTICLE_COUNT = 90
+const STAR_COUNT_MOBILE = 80
+const PARTICLE_COUNT_MOBILE = 40
 const STAR_HUES = [215, 200, 270, 310, 230, 290, 195, 260, 320, 240, 330]
 const PARTICLE_HUES = [210, 195, 270, 320, 290, 310, 200, 240, 330, 280, 220, 305]
 
@@ -48,9 +50,12 @@ export default function GlobalBackground() {
 
   const init = useCallback((w: number, h: number) => {
     dimsRef.current = { w, h }
+    const isMobile = w <= 768 || h <= 768
+    const starsN = isMobile ? STAR_COUNT_MOBILE : STAR_COUNT
+    const particlesN = isMobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT
 
     const stars: Star[] = []
-    for (let i = 0; i < STAR_COUNT; i++) {
+    for (let i = 0; i < starsN; i++) {
       stars.push({
         x: Math.random() * w, y: Math.random() * h,
         size: Math.random() * 1.8 + 0.2,
@@ -63,7 +68,7 @@ export default function GlobalBackground() {
     objectsRef.current.stars = stars
 
     const particles: Particle[] = []
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < particlesN; i++) {
       particles.push({
         x: Math.random() * w, y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
@@ -150,7 +155,9 @@ export default function GlobalBackground() {
 
       rafRef.current = requestAnimationFrame(animate)
     }
-    rafRef.current = requestAnimationFrame(animate)
+    requestAnimationFrame(() => {
+      rafRef.current = requestAnimationFrame(animate)
+    })
 
     return () => {
       window.removeEventListener('resize', resize)
