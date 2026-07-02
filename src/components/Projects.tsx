@@ -71,6 +71,8 @@ export default function Projects() {
                       }}
                       src={project.image}
                       alt={project.title}
+                      width={562}
+                      height={220}
                       className="proj-card__img"
                       loading="lazy"
                     />
