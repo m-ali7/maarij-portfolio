@@ -25,7 +25,7 @@ export interface Project {
   type: string
   description: string
   technologies: string[]
-  points?: string[]
+  image?: string
   liveUrl?: string
   githubUrl?: string
   status?: 'live' | 'coming-soon'
@@ -54,7 +54,7 @@ export interface Profile {
   experience: ExperienceItem[]
   education: EducationItem[]
   projects: Project[]
-  skills: SkillCategory[]
+  stack: SkillCategory[]
   currently: CurrentlyCard
   currentFocus: string[]
   languages: string[]
@@ -154,42 +154,46 @@ export const profile: Profile = {
   projects: [
     {
       title: 'AI Trading Assistant',
-      type: 'Agentic AI Solution Prototype',
+      type: 'Agentic AI Prototype',
       description:
-        'An AI-powered trading intelligence prototype designed to reduce data-to-decision latency through agentic reasoning workflows, Azure OpenAI, Azure Functions, Power Platform orchestration and a React/Vite interface.',
-      technologies: ['Agentic AI', 'Azure OpenAI', 'Azure Functions', 'Power Platform', 'React/Vite', 'Python'],
-      githubUrl: 'https://github.com/maarij-ali/ai-trading-assistant',
+        'A prototype AI assistant designed to reduce data-to-decision latency for commercial trading teams. It combines structured trading data, agentic reasoning workflows and Azure OpenAI-generated commentary to produce management briefings, root-cause analysis and conversational Q&A.',
+      technologies: ['Python', 'Azure OpenAI', 'Azure Functions', 'Power Automate', 'React', 'Vite'],
+      image: '/ai-trading-assistant-preview.webp',
+      githubUrl: 'https://github.com/m-ali7/ai-trading-assistant',
       status: 'live',
     },
     {
-      title: 'Portfolio Website',
+      title: 'Personal Portfolio',
       type: 'Personal Brand Website',
       description:
-        'A premium animated portfolio built to showcase my background across business analysis, AI engineering and digital transformation.',
-      technologies: ['React', 'Vite', 'TypeScript', 'GSAP', 'Framer Motion'],
-      githubUrl: '#',
+        'A premium animated portfolio built to present my background across business analysis, AI engineering and digital transformation through a cinematic single-page experience.',
+      technologies: ['React', 'Vite', 'TypeScript', 'GSAP', 'Framer Motion', 'Lenis'],
+      image: '/portfolio-preview.webp',
+      githubUrl: 'https://github.com/m-ali7/maarij-portfolio',
       status: 'live',
     },
     {
       title: 'AI Workflow Experiments',
-      type: 'Learning & Prototyping',
+      type: 'Coming Soon',
       description:
-        'A collection of experiments exploring conversational AI, multi-step reasoning workflows, automation patterns and AI-assisted business processes.',
+        'A future collection of experiments exploring conversational AI, multi-step reasoning workflows, automation patterns and AI-assisted business processes.',
       technologies: ['AI', 'Automation', 'Prompt Engineering', 'Workflows'],
+      image: '/ai-workflows-preview.webp',
       githubUrl: '#',
       status: 'coming-soon',
     },
     {
       title: 'Digital Transformation Case Studies',
-      type: 'Business Analysis',
+      type: 'Coming Soon',
       description:
-        'A future section for selected case studies covering enterprise delivery, eCommerce transformation, stakeholder analysis and requirements-led solution design.',
+        'A future set of case studies covering enterprise delivery, eCommerce transformation, stakeholder analysis and requirements-led solution design.',
       technologies: ['Business Analysis', 'Agile', 'eCommerce', 'Transformation'],
+      image: '/digital-transformation-preview.webp',
       githubUrl: '#',
       status: 'coming-soon',
     },
   ],
-  skills: [
+  stack: [
     {
       category: 'AI & Automation',
       items: ['Agentic AI', 'Azure OpenAI', 'Azure Functions', 'Microsoft Power Platform', 'Prompt Engineering', 'Conversational AI', 'AI Solution Design', 'Multi-Step Reasoning Workflows', 'RAG Concepts', 'LoRA & Fine-Tuning Concepts', 'LLM Evaluation & Guardrails'],

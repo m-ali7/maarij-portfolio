@@ -13,17 +13,17 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   'Tools & Technologies': Wrench,
 }
 
-export default function Skills() {
+export default function Stack() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.skills__heading', {
+      gsap.from('.stack__heading', {
         scrollTrigger: { trigger: sectionRef.current, start: 'top 68%' },
         opacity: 0, y: 30, duration: 0.8, ease: 'power3.out',
       })
-      gsap.from('.skills-panel', {
-        scrollTrigger: { trigger: '.skills-grid', start: 'top 70%' },
+      gsap.from('.stack-panel', {
+        scrollTrigger: { trigger: '.stack-grid', start: 'top 70%' },
         opacity: 0, y: 36, duration: 0.8, stagger: 0.15, ease: 'power3.out',
       })
     }, sectionRef)
@@ -31,27 +31,27 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="skills" ref={sectionRef}>
+    <section id="stack" className="stack" ref={sectionRef}>
       <div className="container">
-        <h2 className="skills__heading">Skills & Tools</h2>
-        <p className="skills__subtitle">
-          Capabilities I bring to every engagement.
+        <h2 className="stack__heading">Stack & Tools</h2>
+        <p className="stack__subtitle">
+          Technologies, platforms and methodologies I use to design and build modern digital solutions.
         </p>
 
-        <div className="skills-grid">
-          {profile.skills.map((category) => {
+        <div className="stack-grid">
+          {profile.stack.map((category) => {
             const Icon = CATEGORY_ICONS[category.category] || Brain
             return (
-              <div key={category.category} className="skills-panel glass">
-                <div className="skills-panel__header">
-                  <div className="skills-panel__icon">
+              <div key={category.category} className="stack-panel glass">
+                <div className="stack-panel__header">
+                  <div className="stack-panel__icon">
                     <Icon size={20} />
                   </div>
                   <h3>{category.category}</h3>
                 </div>
-                <div className="skills-panel__items">
+                <div className="stack-panel__items">
                   {category.items.map((skill) => (
-                    <span key={skill} className="skill-pill">
+                    <span key={skill} className="stack-pill">
                       {skill}
                     </span>
                   ))}
