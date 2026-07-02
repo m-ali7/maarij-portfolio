@@ -220,7 +220,7 @@
 @media (max-width: 768px) {
   .hero::after {
     height: 300px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(10, 15, 30, 0.6) 35%, var(--bg-primary) 70%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(10, 15, 30, 0.4) 30%, rgba(10, 15, 30, 0.85) 100%);
   }
 }
 
@@ -836,9 +836,7 @@
 
   .about__visual-overlay {
     background:
-      linear-gradient(to bottom, var(--bg-primary) 0%, transparent 20%),
       linear-gradient(to right, var(--bg-primary) 0%, transparent 30%, transparent 70%, var(--bg-primary) 100%),
-      linear-gradient(to bottom, var(--bg-primary) 0%, transparent 25%),
       linear-gradient(to top, var(--bg-primary) 0%, transparent 25%);
   }
 
@@ -939,7 +937,6 @@
 
   .about__visual-overlay {
     background:
-      linear-gradient(to bottom, var(--bg-primary) 0%, transparent 18%),
       radial-gradient(ellipse 100% 70% at 50% 60%, transparent 20%, var(--bg-primary) 75%);
   }
 
