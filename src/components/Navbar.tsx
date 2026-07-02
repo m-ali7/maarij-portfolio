@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { profile } from '../data/profile'
+import Logo from './Logo'
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
+  { id: 'stack', label: 'Stack' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -40,12 +41,12 @@ export default function Navbar() {
     >
       <div className="container navbar__inner">
         <button
-          className="navbar__logo"
+          className="navbar__logo-btn"
           onClick={() => scrollTo('hero')}
           type="button"
+          aria-label="Scroll to top"
         >
-          {profile.firstName}
-          <span className="navbar__logo-dot">.</span>
+          <Logo />
         </button>
 
         <div className="navbar__links">

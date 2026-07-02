@@ -9,7 +9,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
-import Skills from './components/Skills'
+import Stack from './components/Stack'
 import Contact from './components/Contact'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -31,7 +31,7 @@ export default function App() {
         <About />
         <Experience />
         <Projects />
-        <Skills />
+        <Stack />
         <Contact />
       </main>
     </ReactLenis>

@@ -24,34 +24,76 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
 }
 
-.navbar__logo {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
+.navbar__logo-btn {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+  flex-shrink: 0;
 }
 
-.navbar__logo-dot {
-  color: var(--accent);
+/* ---- Logo ---- */
+
+.navbar-logo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+    linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.3)) border-box;
+  opacity: 0.7;
+}
+
+.navbar-logo__mark {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #818cf8, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.5));
+  line-height: 1;
+  z-index: 1;
+}
+
+.navbar--scrolled .navbar-logo__ring {
+  opacity: 0.5;
 }
 
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navbar__link {
   position: relative;
-  padding: 8px 16px;
+  padding: 8px 18px;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
   border-radius: 8px;
-  transition: color 0.25s ease;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .navbar__link:hover {
@@ -1374,15 +1416,15 @@
 }
 
 /* ============================== */
-/* Skills                         */
+/* Stack                          */
 /* ============================== */
 
-.skills {
+.stack {
   padding: 100px 0;
   position: relative;
 }
 
-.skills__heading {
+.stack__heading {
   font-size: clamp(36px, 5vw, 56px);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -1401,25 +1443,25 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: skills-heading-shimmer 7s ease-in-out infinite;
+  animation: stack-heading-shimmer 7s ease-in-out infinite;
   filter: drop-shadow(0 0 22px rgba(129, 140, 248, 0.3))
     drop-shadow(0 0 45px rgba(56, 189, 248, 0.12));
   display: inline-block;
 }
 
-@keyframes skills-heading-shimmer {
+@keyframes stack-heading-shimmer {
   0%, 100% { background-position: 0% center; }
   50% { background-position: 180% center; }
 }
 
-.skills__subtitle {
+.stack__subtitle {
   font-size: 16px;
   color: var(--text-muted);
   margin-bottom: 48px;
   max-width: 500px;
 }
 
-.skills-grid {
+.stack-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -1427,27 +1469,27 @@
   z-index: 1;
 }
 
-.skills-panel {
+.stack-panel {
   padding: 28px 24px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.skills-panel:hover {
+.stack-panel:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md), 0 0 20px rgba(129, 140, 248, 0.05);
   border-color: rgba(129, 140, 248, 0.15);
 }
 
-.skills-panel__header {
+.stack-panel__header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
 }
 
-.skills-panel__icon {
+.stack-panel__icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1458,19 +1500,19 @@
   color: var(--accent-light);
 }
 
-.skills-panel__header h3 {
+.stack-panel__header h3 {
   font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.skills-panel__items {
+.stack-panel__items {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.skill-pill {
+.stack-pill {
   display: inline-flex;
   align-items: center;
   padding: 6px 13px;
@@ -1484,28 +1526,28 @@
   white-space: nowrap;
 }
 
-.skill-pill:hover {
+.stack-pill:hover {
   background: rgba(129, 140, 248, 0.14);
   color: var(--accent-light);
   border-color: rgba(129, 140, 248, 0.25);
 }
 
 @media (max-width: 900px) {
-  .skills-grid {
+  .stack-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .skills {
+  .stack {
     padding: 60px 0;
   }
 
-  .skills__heading {
+  .stack__heading {
     font-size: clamp(28px, 8vw, 40px);
   }
 
-  .skills__subtitle {
+  .stack__subtitle {
     margin-bottom: 36px;
     font-size: 14px;
   }
