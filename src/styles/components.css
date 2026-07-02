@@ -531,6 +531,10 @@
   .hero__scroll-indicator {
     bottom: 28px;
   }
+
+  .hero::after {
+    height: 200px;
+  }
 }
 
 /* ============================== */
@@ -871,6 +875,18 @@
   .about-card--languages:hover {
     transform: translateY(-3px) !important;
   }
+
+  .about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
 }
 
 /* ============================== */
@@ -944,6 +960,10 @@
   .about-card--focus:hover,
   .about-card--languages:hover {
     transform: translateY(-2px) !important;
+  }
+
+  .about::after {
+    height: 200px;
   }
 }
 
