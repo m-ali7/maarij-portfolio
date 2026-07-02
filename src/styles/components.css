@@ -831,6 +831,7 @@
 
   .about__visual-bg {
     opacity: 0.18;
+    top: 80px;
   }
 
   .about__visual-overlay {
@@ -933,6 +934,7 @@
 
   .about__visual-bg {
     opacity: 0.12;
+    top: 60px;
   }
 
   .about__visual-overlay {
